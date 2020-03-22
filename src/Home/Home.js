@@ -15,7 +15,7 @@ class Home extends Component {
           over to the My Recipes page.</p>
 
         <h2>
-            <Link to="/App">Try it out for yourself!</Link>{' '}
+            <Link to="/Search">Try it out for yourself!</Link>{' '}
             <FontAwesomeIcon icon= "coffee"/>
         </h2>
 

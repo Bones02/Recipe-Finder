@@ -6,17 +6,23 @@ class Search extends Component {
       super(props);
       this.state = {
         error: null,
-        isLoaded: false,
         recipe: [],
         term: ''
       };
     }
 
+    saveRecipe(){
+
+    }
+    
     updateTerm(term) {
-        this.setState({term: term });
+        this.setState({term: term});
+        console.log(`term is ${term}`)
     }
 
-    handleSubmit() {
+    handleSubmit(e) {
+        e.preventDefault();
+        e.target.reset();
         const {term} = this.state
         console.log(`term is ${term}`)
         console.log(`api key is ${config.API_KEY}`)
@@ -26,13 +32,11 @@ class Search extends Component {
         .then(
           (result) => {
             this.setState({
-              isLoaded: true,
               recipe: result.results
             });
           },
           (error) => {
             this.setState({
-              isLoaded: true,
               error
             });
           }
@@ -40,16 +44,15 @@ class Search extends Component {
     }
   
     render() {
-      const { error, isLoaded, recipe, term} = this.state;
+      const { error, isLoaded, recipe } = this.state;
+      console.log(this.state)
       if (error) {
         return <div>Error: {error.message}</div>;
-      } else if (!isLoaded) {
-        return <div>Loading...</div>;
       } else {
         return (
             <div>
                 <div className="search_page">
-                    <form className="form-search" onSubmit={(e) => handleSubmit(e)}>
+                    <form className="form-search" onSubmit={(e) => this.handleSubmit(e)}>
                         <label htmlFor="search" >Search:</label>
                         <input type="text" className="form-control" id="term" placeholder="coffee" name="term" onChange={e => this.updateTerm(e.target.value)}/>
                         <button type="submit" className="button-submit"></button>
@@ -63,6 +66,7 @@ class Search extends Component {
                         <p>{recipe.serves}</p>
                         <p>{recipe.readyInMinutes} </p>
                         <img src={recipe.image}/>
+                        <button type="submit" className="button-save" onClick={e => this.saveRecipe(e.target.value)}></button>
                     </li>
                     ))}
                 </ul>
