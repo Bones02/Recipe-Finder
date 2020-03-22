@@ -1,10 +1,7 @@
 import React from "react";
 
-export const recipeContext = {
-    recipes: [],
+export default React.createContext({
     savedRecipes: [],
-    handleSubmit: () => {},
-    addRecipe: () => {}
-}
-
-export const recipeContext = React.createContext();    
+    addRecipe: () => {},
+    saveRecipe: () => {}
+}) 

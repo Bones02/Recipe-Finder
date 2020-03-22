@@ -12,9 +12,8 @@ class Search extends Component {
       };
       this.context = {
         savedRecipes: [],
-        recipes: [],
-        handleSubmit: () => {},
-        addRecipe: () => {}
+        addRecipe: () => {},
+        saveRecipe: () => {}
       }
     }
 
@@ -23,30 +22,29 @@ class Search extends Component {
     addRecipe = recipe => {
         this.setState({
             savedRecipes: [...this.state.savedRecipes, recipe]
-    })
-
-    saveRecipe(e) {
-        event.preventDefault();
-        const {title, id, serves, readyInMinutes, image } = savedRecipe;
-        console.log(recipe)
-         
-        let options = {
-            method: 'POST', 
-            body: JSON.stringify({title, id, serves, readyInMinutes, image }),
-            headers: { 'Content-Type': 'application/json'}
-        }
-        fetch(`${config.API_ENDPOINT}/Saved/recipes/`, options) 
-        .then(res => res.json())
-        .then(() => {
-            this.context.addRecipe({title, id, serves, readyInMinutes, image })
-            this.props.history.push(`/Saved`)
         })
     }
 
-    }
+    // saveRecipe(e){
+    //     event.preventDefault();
+    //     const {title, id, servings, readyInMinutes, image } = Recipe;
+    //     console.log(recipe)
+         
+    //     let options = {
+    //         method: 'POST', 
+    //         body: JSON.stringify({title, id, servings, readyInMinutes, image }),
+    //         headers: { 'Content-Type': 'application/json'}
+    //     }
+    //     fetch(`${config.API_ENDPOINT}/Saved/recipes/`, options) 
+    //     .then(res => res.json())
+    //     .then(() => {
+    //         this.context.addRecipe({title, id, servings, readyInMinutes, image })
+    //         this.props.history.push(`/Saved`)
+    //     })
+    // }
 
     updateTerm(term) {
-        this.setState({term: term});
+        this.setState({term: term})
         console.log(`term is ${term}`)
     }
 
@@ -75,10 +73,6 @@ class Search extends Component {
   
     render() {
       const { error, recipe } = this.state;
-      const value = {
-        recipe: this.state.recipe,
-    };
-    console.log(value)
 
       console.log(this.state)
       if (error) {
@@ -96,13 +90,13 @@ class Search extends Component {
                 <ul>
                     {recipe.map(recipe => (
                     <li key={recipe.name}>
-                        <p>{recipe.id}</p> 
-                        <p>{recipe.title}</p> 
-                        <p>{recipe.serves}</p>
-                        <p>{recipe.readyInMinutes} </p>
-                        <img src={recipe.image}/>
-                        <button type="submit" className="button-save" onClick={e => this.saveRecipe(e.target.value)}></button>   
-                    </li>
+                        <p>Id: {recipe.id}</p> 
+                        <p>Title: {recipe.title}</p> 
+                        <p>Serves: {recipe.servings}</p>
+                        <p>Ready In: {recipe.readyInMinutes}</p>
+                        <img src={`https://spoonacular.com/recipeImages/${recipe.image}`}/>   
+                        <button type="submit" className="button-save" onClick={e => this.saveRecipe(e.target.value)}></button>  
+                    </li> 
                     ))}
                 </ul>
             </div>
@@ -110,4 +104,5 @@ class Search extends Component {
       }
     }
 }
+
 export default Search;
