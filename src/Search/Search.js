@@ -9,12 +9,38 @@ class Search extends Component {
         recipe: [],
         term: ''
       };
+      this.context = {
+          recipes: {}
+      }
     }
 
-    saveRecipe(){
+    recipes.contextType = savedRecipesContext;
+
+    addRecipe = recipe => {
+        this.setState({
+            recipes: [...this.state.recipe, recipe]
+        })
+
+    saveRecipe(recipe){
+        event.preventDefault();
+        const {title, id, serves, readyInMinutes, image } = recipe;
+        console.log(recipe)
+         
+        let options = {
+            method: 'POST', 
+            body: JSON.stringify({title, id, serves, readyInMinutes, image }),
+            headers: { 'Content-Type': 'application/json'}
+        }
+        fetch(`${config.API_ENDPOINT}/Saved/recipes/`, options) 
+        .then(res => res.json())
+        .then(() => {
+            this.context.addRecipe({title, id, serves, readyInMinutes, image })
+            this.props.history.push(`/Saved`)
+        })
+    }
 
     }
-    
+
     updateTerm(term) {
         this.setState({term: term});
         console.log(`term is ${term}`)
@@ -44,7 +70,12 @@ class Search extends Component {
     }
   
     render() {
-      const { error, isLoaded, recipe } = this.state;
+      const { error, recipe } = this.state;
+      const value = {
+        recipe: this.state.recipe,
+    };
+    console.log(value)
+
       console.log(this.state)
       if (error) {
         return <div>Error: {error.message}</div>;
@@ -66,7 +97,9 @@ class Search extends Component {
                         <p>{recipe.serves}</p>
                         <p>{recipe.readyInMinutes} </p>
                         <img src={recipe.image}/>
-                        <button type="submit" className="button-save" onClick={e => this.saveRecipe(e.target.value)}></button>
+                        <savedRecipesContext.Provider value={value}>
+                            <button type="submit" className="button-save" onClick={e => this.saveRecipe(e.target.value)}></button>
+                        </savedRecipesContext.Provider>
                     </li>
                     ))}
                 </ul>
