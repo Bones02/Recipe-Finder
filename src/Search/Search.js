@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import config from '../config';
+import RecipeContext from '../RecipeContext'
 
 class Search extends Component {
     constructor(props) {
@@ -10,20 +11,23 @@ class Search extends Component {
         term: ''
       };
       this.context = {
-          recipes: {}
+        savedRecipes: [],
+        recipes: [],
+        handleSubmit: () => {},
+        addRecipe: () => {}
       }
     }
 
-    recipes.contextType = savedRecipesContext;
+    static contextType = RecipeContext;
 
     addRecipe = recipe => {
         this.setState({
-            recipes: [...this.state.recipe, recipe]
-        })
+            savedRecipes: [...this.state.savedRecipes, recipe]
+    })
 
-    saveRecipe(recipe){
+    saveRecipe(e) {
         event.preventDefault();
-        const {title, id, serves, readyInMinutes, image } = recipe;
+        const {title, id, serves, readyInMinutes, image } = savedRecipe;
         console.log(recipe)
          
         let options = {
@@ -97,9 +101,7 @@ class Search extends Component {
                         <p>{recipe.serves}</p>
                         <p>{recipe.readyInMinutes} </p>
                         <img src={recipe.image}/>
-                        <savedRecipesContext.Provider value={value}>
-                            <button type="submit" className="button-save" onClick={e => this.saveRecipe(e.target.value)}></button>
-                        </savedRecipesContext.Provider>
+                        <button type="submit" className="button-save" onClick={e => this.saveRecipe(e.target.value)}></button>   
                     </li>
                     ))}
                 </ul>

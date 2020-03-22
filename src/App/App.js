@@ -19,9 +19,21 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 library.add(faPlus, faChevronLeft, faTrashAlt, faCheckDouble, faCoffee, faRunning)
 
 class Main extends Component {
+  
+  addRecipe = recipe => {
+    this.setState({
+        savedRecipes: [...this.state.savedRecipes, recipe]
+  })
   render() {
+    const value = {
+      recipes: this.state.recipes,
+      savedRecipes: this.state.savedRecipes,
+      addRecipe: this.state.addRecipe,
+    }
+    
     return (
-        <HashRouter>
+        <Router>
+        <savedRecipesContext.Provider value={value}>
             <div>
                 <h1>Recipe Finder</h1>
                 <FontAwesomeIcon icon= "coffee"/>
@@ -43,7 +55,8 @@ class Main extends Component {
                     </div>
                 </div>
             </div>
-        </HashRouter>
+          </savedRecipesContext.Provider>
+        </Router>
     );
   }
 }

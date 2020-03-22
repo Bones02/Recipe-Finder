@@ -1,9 +1,10 @@
-export const savedRecipes = {
-    title: '',
-    id: '',
-    serves: '',
-    readyInMinutes: '',
-    image: ''
+import React from "react";
+
+export const recipeContext = {
+    recipes: [],
+    savedRecipes: [],
+    handleSubmit: () => {},
+    addRecipe: () => {}
 }
 
-export const savedRecipesContext = React.createContext();
+export const recipeContext = React.createContext();    
