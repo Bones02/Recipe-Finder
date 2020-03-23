@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import config from '../config';
-import RecipeContext from '../RecipeContext'
+import RecipeContext from '../RecipeContext';
+import './Search.css'
 
 class Search extends Component {
     constructor(props) {
@@ -8,22 +9,19 @@ class Search extends Component {
       this.state = {
         error: null,
         recipe: [],
-        term: ''
+        term: '',
+        savedRecipes: []
       };
-      this.context = {
-        savedRecipes: [],
-        addRecipe: () => {},
-        saveRecipe: () => {}
-      }
     }
 
     static contextType = RecipeContext;
 
-    addRecipe = recipe => {
+    saveRecipe = recipe => {
         this.setState({
             savedRecipes: [...this.state.savedRecipes, recipe]
         })
-    }
+    } 
+
 
     // saveRecipe(e){
     //     event.preventDefault();
@@ -73,6 +71,8 @@ class Search extends Component {
   
     render() {
       const { error, recipe } = this.state;
+      
+      console.log(this.state.savedRecipes)
 
       console.log(this.state)
       if (error) {
@@ -83,19 +83,22 @@ class Search extends Component {
                 <div className="search_page">
                     <form className="form-search" onSubmit={(e) => this.handleSubmit(e)}>
                         <label htmlFor="search" >Search:</label>
-                        <input type="text" className="form-control" id="term" placeholder="coffee" name="term" onChange={e => this.updateTerm(e.target.value)}/>
+                        <input type="text" className="form-control" id="term" 
+                            placeholder="coffee" name="term" 
+                            onChange={e => this.updateTerm(e.target.value)}/>
                         <button type="submit" className="button-submit"></button>
                     </form>
                 </div>
-                <ul>
+                <ul className="recipe_card">
                     {recipe.map(recipe => (
                     <li key={recipe.name}>
                         <p>Id: {recipe.id}</p> 
                         <p>Title: {recipe.title}</p> 
                         <p>Serves: {recipe.servings}</p>
-                        <p>Ready In: {recipe.readyInMinutes}</p>
+                        <p>Ready in {recipe.readyInMinutes} Minutes</p>
                         <img src={`https://spoonacular.com/recipeImages/${recipe.image}`}/>   
-                        <button type="submit" className="button-save" onClick={e => this.saveRecipe(e.target.value)}></button>  
+                        <button type="submit" className="button-save" 
+                            onClick={e => this.context.saveRecipe(recipe)}>Save</button>  
                     </li> 
                     ))}
                 </ul>

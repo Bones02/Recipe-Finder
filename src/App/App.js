@@ -20,45 +20,22 @@ import RecipeContext from '../RecipeContext'
 library.add(faPlus, faChevronLeft, faTrashAlt, faCheckDouble, faCoffee, faRunning)
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.context = {
-      savedRecipes: [],
-      addRecipe: () => {},
-      saveRecipe: () => {}
-    }
+  state = {
+    savedRecipes: [],
   }
 
+  
   static contextType = RecipeContext;
 
-  addRecipe = recipe => {
+  saveRecipe = recipe => {
     this.setState({
         savedRecipes: [...this.state.savedRecipes, recipe]
     })
-  } 
-
-  // saveRecipe(e) {
-  //   event.preventDefault();
-  //   const {title, id, serves, readyInMinutes, image } = savedRecipe;
-  //   console.log(recipe)
-     
-  //   let options = {
-  //       method: 'POST', 
-  //       body: JSON.stringify({title, id, serves, readyInMinutes, image }),
-  //       headers: { 'Content-Type': 'application/json'}
-  //   }
-  //   fetch(`${config.API_ENDPOINT}/Saved/recipes/`, options) 
-  //   .then(res => res.json())
-  //   .then(() => {
-  //       this.context.addRecipe({title, id, serves, readyInMinutes, image })
-  //       this.props.history.push(`/Saved`)
-  //   })
-  // }
+  }
 
   render() {
       const value = {
-        savedRecipes: this.savedRecipes,
-        addRecipe: this.addRecipe,
+        saveRecipe: this.saveRecipe,
       }
 
       return (

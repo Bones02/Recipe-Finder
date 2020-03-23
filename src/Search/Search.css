@@ -1,0 +1,14 @@
+.recipe_card {
+    background: grey;
+
+}
+
+.recipe_card li {
+    border: 3px black solid;
+    margin-top: 15px;
+}
+
+.recipe_card img {
+    height: 100px;
+    width: 100px;
+}
