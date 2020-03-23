@@ -29,7 +29,7 @@ class App extends Component {
 
   saveRecipe = recipe => {
     this.setState({
-        savedRecipes: [...this.state.savedRecipes, recipe]
+        savedRecipes: [...this.context.savedRecipes, recipe]
     })
     console.log("recipe saved")
     console.log(this.state.savedRecipes)

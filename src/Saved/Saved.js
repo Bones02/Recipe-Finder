@@ -16,6 +16,7 @@ class Saved extends Component {
         console.log(savedRecipes)
         return (
             <div>
+                {/* This is where I will make a call to my database to that will render all saved recipes. */}
                 <p>
                     Saved Recipes
                 </p>

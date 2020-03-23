@@ -37,7 +37,7 @@ class Search extends Component {
     //         this.props.history.push(`/Saved`)
     //     })
     // }
-    
+    //This is the API call based on user input term.
     updateTerm(term) {
         this.setState({term: term})
         console.log(`term is ${term}`)
@@ -70,9 +70,7 @@ class Search extends Component {
       const { error, recipe } = this.state;
       
       console.log(this.context.savedRecipes)
-
       console.log(this.state)
-      console.log(recipe)
       if (error) {
         return <div>Error: {error.message}</div>;
       } else {
