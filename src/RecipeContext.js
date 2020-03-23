@@ -1,5 +1,6 @@
 import React from "react";
 
 export default React.createContext({
-    saveRecipe: () => {}
+    saveRecipe: () => {},
+    savedRecipes: []
 }) 

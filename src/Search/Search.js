@@ -10,18 +10,15 @@ class Search extends Component {
         error: null,
         recipe: [],
         term: '',
-        savedRecipes: []
       };
+    }
+    static defaultProps = {
+        match: {
+          params: {}
+        }
     }
 
     static contextType = RecipeContext;
-
-    saveRecipe = recipe => {
-        this.setState({
-            savedRecipes: [...this.state.savedRecipes, recipe]
-        })
-    } 
-
 
     // saveRecipe(e){
     //     event.preventDefault();
@@ -40,7 +37,7 @@ class Search extends Component {
     //         this.props.history.push(`/Saved`)
     //     })
     // }
-
+    
     updateTerm(term) {
         this.setState({term: term})
         console.log(`term is ${term}`)
@@ -72,9 +69,10 @@ class Search extends Component {
     render() {
       const { error, recipe } = this.state;
       
-      console.log(this.state.savedRecipes)
+      console.log(this.context.savedRecipes)
 
       console.log(this.state)
+      console.log(recipe)
       if (error) {
         return <div>Error: {error.message}</div>;
       } else {
@@ -95,7 +93,7 @@ class Search extends Component {
                         <p>Id: {recipe.id}</p> 
                         <p>Title: {recipe.title}</p> 
                         <p>Serves: {recipe.servings}</p>
-                        <p>Ready in {recipe.readyInMinutes} Minutes</p>
+                        <p>Ready in: {recipe.readyInMinutes} Minutes</p>
                         <img src={`https://spoonacular.com/recipeImages/${recipe.image}`}/>   
                         <button type="submit" className="button-save" 
                             onClick={e => this.context.saveRecipe(recipe)}>Save</button>  

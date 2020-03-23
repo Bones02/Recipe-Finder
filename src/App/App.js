@@ -31,11 +31,14 @@ class App extends Component {
     this.setState({
         savedRecipes: [...this.state.savedRecipes, recipe]
     })
+    console.log("recipe saved")
+    console.log(this.state.savedRecipes)
   }
 
   render() {
       const value = {
-        saveRecipe: this.saveRecipe,
+        savedRecipes: this.state.savedRecipes,
+        saveRecipe: this.saveRecipe
       }
 
       return (
