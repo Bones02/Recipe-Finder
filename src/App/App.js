@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import {
     Route,
-    NavLink,
-    HashRouter
+    NavLink
   } from "react-router-dom";
 import config from '../config';
 import { library } from '@fortawesome/fontawesome-svg-core';
@@ -17,12 +16,16 @@ import 'typeface-roboto'
 import './App.css'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import RecipeContext from '../RecipeContext'
+import PropTypes from 'prop-types';
 
 library.add(faPlus, faChevronLeft, faTrashAlt, faCheckDouble, faCoffee, faRunning)
 
 class App extends Component {
-  state = {
-    recipes: [],
+  constructor(props) {
+    super(props);
+    this.state = {
+      recipes: [],
+    }
   }
 
   
@@ -44,19 +47,49 @@ class App extends Component {
         .catch(error => {
             console.error({error});
         });
-}
-  saveRecipe = recipe => {
+  }
+
+  handleDeleteRecipe = recipeId => {
     this.setState({
-        savedRecipes: [...this.context.savedRecipes, recipe]
-    })
+        recipes: this.state.recipes.filter(recipe => recipe.id !== recipeId)
+    });
+  };
+
+  saveRecipe = recipe => {
+    this.handleRecipe(recipe)
     console.log("recipe saved")
-    console.log(this.state.savedRecipes)
+    console.log(recipe)
+  }
+
+  handleRecipe(recipe){
+    //const {savedRecipes} = savedRecipes
+    console.log(recipe)
+     
+    let options = {
+        method: 'POST', 
+        body: JSON.stringify({
+                title: recipe.title, 
+                id: recipe.id, 
+                servings: recipe.servings, 
+                readyInMinutes: recipe.readyInMinutes, 
+                image: recipe.image }),
+        headers: { 'Content-Type': 'application/json'}
+    }
+    fetch(`${config.API_ENDPOINT}/recipe`, options) 
+    .then(res => console.log(res))
+    .then(() => {
+        console.log(this.props) 
+        //this.props.history.push(`/Saved`)
+    })
   }
 
   render() {
       const value = {
         recipes: this.state.recipes,
-        savedRecipes: this.context.savedRecipes,
+        savedRecipes: this.savedRecipes,
+        saveRecipe: this.saveRecipe,
+        recipes: this.state.recipes,
+        deleteRecipe: this.handleDeleteRecipe,
       }
 
       return (

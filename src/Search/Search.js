@@ -8,7 +8,7 @@ class Search extends Component {
       super(props);
       this.state = {
         error: null,
-        recipe: [],
+        recipes: [],
         term: '',
       };
     }
@@ -20,32 +20,9 @@ class Search extends Component {
 
     static contextType = RecipeContext;
 
-
-    handleRecipe(recipe){
-        const {savedRecipes} = savedRecipes
-        console.log(recipe)
-         
-        let options = {
-            method: 'POST', 
-            body: JSON.stringify({title: savedRecipes.title, 
-                    id: {recipe.id}, 
-                    servings: savedRecipes.servings, 
-                    readyInMinutes: savedRecipes.readyInMinutes, 
-                    image: savedRecipes.image }),
-            headers: { 'Content-Type': 'application/json'}
-        }
-        fetch(`${config.API_ENDPOINT}recipes/`, options) 
-        .then(res => res.json())
-        .then(() => {
-            this.props.history.push(`/Saved`)
-        })
-    }
-
-
     //This is the API call based on user input term.
     updateTerm(term) {
         this.setState({term: term})
-        console.log(`term is ${term}`)
     }
 
     handleSubmit(e) {
@@ -60,7 +37,7 @@ class Search extends Component {
         .then(
           (result) => {
             this.setState({
-              recipe: result.results
+              recipes: result.results
             });
           },
           (error) => {
@@ -72,10 +49,8 @@ class Search extends Component {
     }
   
     render() {
-      const { error, recipe } = this.state;
+      const { error, recipes } = this.state;
       
-      console.log(this.context.savedRecipes)
-      console.log(this.state)
       if (error) {
         return <div>Error: {error.message}</div>;
       } else {
@@ -91,8 +66,8 @@ class Search extends Component {
                     </form>
                 </div>
                 <ul className="recipe_card">
-                    {recipe.map(recipe => (
-                    <li key={recipe.name}>
+                    {recipes.map(recipe => (
+                    <li key={recipe.identification}>
                         <p>Id: {recipe.id}</p> 
                         <p>Title: {recipe.title}</p> 
                         <p>Serves: {recipe.servings}</p>

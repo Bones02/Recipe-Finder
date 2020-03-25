@@ -1,45 +1,76 @@
 import React, { Component } from "react";
 import RecipeContext from '../RecipeContext';
-//import './Saved.css'
+import config from '../config';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import {
+  faPlus, faChevronLeft, faTrashAlt, faCheckDouble, faCoffee, faRunning
+} from '@fortawesome/free-solid-svg-icons'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import './Saved.css'
 
 class Saved extends Component {
-    static defaultProps = {
-        match: {
-          params: {}
-        }
-    }
+    static defaultProps ={
+        onDeleteRecipe: () => {},
+      }
 
     static contextType = RecipeContext;
 
+    handleDeleteRecipe = recipeId => {
+        console.log(recipeId)
+        this.setState({
+            recipes: this.state.recipes.filter(recipe => recipe.id !== recipeId)
+        });
+    };
+
+    handleClickDelete = recipe => {
+        const recipeId = recipe.id
+          console.log(this.props)
+          console.log(recipe)
+          console.log(recipeId)
+        
+        fetch(`${config.API_ENDPOINT}/recipe/${recipeId}`, {
+          method: 'DELETE',
+          headers: {
+            'content-type': 'application/json'
+          },
+        })
+    
+          .then(() => {
+            this.context.deleteRecipe(recipeId)
+            this.props.onDeleteRecipe()
+          })
+    
+          .catch(error => {
+            console.error({ error })
+          })
+      }
+    
+
     render(){
-        const { savedRecipes=[] } = this.context
-        console.log(savedRecipes)
+        const { recipes=[] } = this.context
         return (
-            <div>
-                {/* This is where I will make a call to my database to that will render all saved recipes. */}
-                <p>
-                    Saved Recipes
-                </p>
-                <p>
-                    {savedRecipes}
-                </p>
-            </div>
-            
-            // <div>
-            //     <ul className="recipe_card">
-            //         {this.state.savedRecipes.map(recipe => (
-            //         <li key={name}>
-            //             <p>Id: {id}</p> 
-            //             <p>Title: {title}</p> 
-            //             <p>Serves: {servings}</p>
-            //             <p>Ready in: {readyInMinutes} Minutes</p>
-            //             <img src={`https://spoonacular.com/recipeImages/${image}`}/>   
-            //             <button type="submit" className="button-delete" 
-            //                 onClick={e => this.context.removeRecipe(recipe)}>Remove</button>  
-            //         </li> 
-            //         ))}
-            //     </ul>
-            // </div>
+            <section className='saved_recipes'>
+                <ul className="saved_recipe_card">
+                 {recipes.map(recipe=> (
+                    <li key={recipe.identification}>
+                        <p>{recipe.title}</p>
+                        <p>Serves: {recipe.servings}</p>
+                        <p>Ready in: {recipe.readyInMinutes} Minutes</p>
+                        <a href={`https://spoonacular.com/recipes/${recipe.image}`} target="_blank" alt="Recipe Link">Recipe Page</a>
+                        <img src={`https://spoonacular.com/recipeImages/${recipe.image}`}/>   
+                        <button
+                            className='Note__delete'
+                            type='button'
+                            onClick={() => this.handleClickDelete(recipe)}
+                        >
+                        <FontAwesomeIcon icon='trash-alt' />
+                        {' '}
+                        Delete
+                        </button> 
+                    </li> 
+                    ))}
+                </ul>
+            </section>
         )
     }
 }
