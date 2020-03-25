@@ -4,6 +4,7 @@ import {
     NavLink,
     HashRouter
   } from "react-router-dom";
+import config from '../config';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
   faPlus, faChevronLeft, faTrashAlt, faCheckDouble, faCoffee, faRunning
@@ -21,12 +22,29 @@ library.add(faPlus, faChevronLeft, faTrashAlt, faCheckDouble, faCoffee, faRunnin
 
 class App extends Component {
   state = {
-    savedRecipes: [],
+    recipes: [],
   }
 
   
   static contextType = RecipeContext;
 
+  componentDidMount() {
+    Promise.all([
+        fetch(`${config.API_ENDPOINT}/recipe`),
+    ])
+        .then(([recipesRes]) => {
+            if (!recipesRes.ok)
+                return recipesRes.json().then(e => Promise.reject(e));
+
+            return Promise.all([recipesRes.json()]);
+        })
+        .then(([recipes]) => {
+            this.setState({recipes});
+        })
+        .catch(error => {
+            console.error({error});
+        });
+}
   saveRecipe = recipe => {
     this.setState({
         savedRecipes: [...this.context.savedRecipes, recipe]
@@ -37,8 +55,8 @@ class App extends Component {
 
   render() {
       const value = {
-        savedRecipes: this.state.savedRecipes,
-        saveRecipe: this.saveRecipe
+        recipes: this.state.recipes,
+        savedRecipes: this.context.savedRecipes,
       }
 
       return (

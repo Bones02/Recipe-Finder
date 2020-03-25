@@ -20,23 +20,28 @@ class Search extends Component {
 
     static contextType = RecipeContext;
 
-    // saveRecipe(e){
-    //     event.preventDefault();
-    //     const {title, id, servings, readyInMinutes, image } = Recipe;
-    //     console.log(recipe)
+
+    handleRecipe(recipe){
+        const {savedRecipes} = savedRecipes
+        console.log(recipe)
          
-    //     let options = {
-    //         method: 'POST', 
-    //         body: JSON.stringify({title, id, servings, readyInMinutes, image }),
-    //         headers: { 'Content-Type': 'application/json'}
-    //     }
-    //     fetch(`${config.API_ENDPOINT}/Saved/recipes/`, options) 
-    //     .then(res => res.json())
-    //     .then(() => {
-    //         this.context.addRecipe({title, id, servings, readyInMinutes, image })
-    //         this.props.history.push(`/Saved`)
-    //     })
-    // }
+        let options = {
+            method: 'POST', 
+            body: JSON.stringify({title: savedRecipes.title, 
+                    id: {recipe.id}, 
+                    servings: savedRecipes.servings, 
+                    readyInMinutes: savedRecipes.readyInMinutes, 
+                    image: savedRecipes.image }),
+            headers: { 'Content-Type': 'application/json'}
+        }
+        fetch(`${config.API_ENDPOINT}recipes/`, options) 
+        .then(res => res.json())
+        .then(() => {
+            this.props.history.push(`/Saved`)
+        })
+    }
+
+
     //This is the API call based on user input term.
     updateTerm(term) {
         this.setState({term: term})
@@ -93,7 +98,7 @@ class Search extends Component {
                         <p>Serves: {recipe.servings}</p>
                         <p>Ready in: {recipe.readyInMinutes} Minutes</p>
                         <img src={`https://spoonacular.com/recipeImages/${recipe.image}`}/>   
-                        <button type="submit" className="button-save" 
+                        <button type="button" className="button-save" 
                             onClick={e => this.context.saveRecipe(recipe)}>Save</button>  
                     </li> 
                     ))}

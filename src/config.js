@@ -1,6 +1,6 @@
-const newLocal = "f56607cc4567453291ac7c3ea2e2b5ff";
 export default {
-    API_KEY:newLocal
+    API_KEY: process.env.REACT_APP_API_KEY,
+    API_ENDPOINT: 'http://localhost:8000'
 }
 
 
