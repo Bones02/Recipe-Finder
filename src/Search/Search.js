@@ -68,8 +68,7 @@ class Search extends Component {
                 <ul className="recipe_card">
                     {recipes.map(recipe => (
                     <li key={recipe.identification}>
-                        <p>Id: {recipe.id}</p> 
-                        <p>Title: {recipe.title}</p> 
+                        <p className="title">{recipe.title}</p> 
                         <p>Serves: {recipe.servings}</p>
                         <p>Ready in: {recipe.readyInMinutes} Minutes</p>
                         <img src={`https://spoonacular.com/recipeImages/${recipe.image}`}/>   

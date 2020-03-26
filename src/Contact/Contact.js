@@ -7,7 +7,7 @@ class Contact extends Component {
       <div className="contact">
         <h2>HAVE QUESTIONS?</h2>
         <p>The easiest thing to do is view the curriculum at 
-            <a href="thinkfl.com"> Thinkful</a>.
+            <a target="_blank" href="thinkfl.com"> Thinkful</a>.
         </p>
       </div>
     );

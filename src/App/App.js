@@ -96,7 +96,6 @@ class App extends Component {
           <RecipeContext.Provider value={value}>
               <div>
                   <h1>Recipe Finder</h1>
-                  <FontAwesomeIcon icon= "coffee"/>
                   <ul className="header">
                       <li><NavLink exact to="/">Home</NavLink></li>
                       <li><NavLink to="/Search">Search for Recipes</NavLink></li>

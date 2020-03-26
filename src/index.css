@@ -1,13 +1,87 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+@media only screen 
+and (min-device-width: 300px)   
+and (max-device-width: 649px) { 
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    background-color: #80636E;
+    padding: 10px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, p, ul, li {
+    font-family: "Ubuntu";
+  }
+  ul.header li {
+    display: inline;
+    list-style-type: none;
+  }
+  ul.header {
+    background-color: #111;
+    padding: 0;
+  }
+  ul.header li a {
+    color: #FFF;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+  }
+  .content {
+    background-color: #FFF;
+    padding: 20px;
+  }
+  .active {
+    background-color: #808488;
+  }
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+@media only screen 
+and (min-device-width: 650px) {
+  * {
+    box-sizing: border-box;
+  }
+  body {
+    background-color: #80636E;
+    padding: 10px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  }
+  h1, h2, h3, p, ul, li {
+    font-family: "Ubuntu";
+  }
+  ul.header li {
+    display: inline;
+    list-style-type: none;
+  }
+  ul.header {
+    background-color: #111;
+    padding: 0;
+  }
+  ul.header li a {
+    color: #FFF;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+  }
+  .content {
+    background-color: #FFF;
+    padding: 20px;
+  }
+  .content li {
+    margin-bottom: 10px;
+  }
+  .active {
+    background-color: #808488;
+  }
 }

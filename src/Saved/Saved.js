@@ -49,11 +49,12 @@ class Saved extends Component {
     render(){
         const { recipes=[] } = this.context
         return (
-            <section className='saved_recipes'>
+            <section className='saved'>
+              <h2 className="saved_recipes">Saved Recipes</h2>
                 <ul className="saved_recipe_card">
                  {recipes.map(recipe=> (
                     <li key={recipe.identification}>
-                        <p>{recipe.title}</p>
+                        <p className="title">{recipe.title}</p>
                         <p>Serves: {recipe.servings}</p>
                         <p>Ready in: {recipe.readyInMinutes} Minutes</p>
                         <a href={`https://spoonacular.com/recipes/${recipe.image}`} target="_blank" alt="Recipe Link">Recipe Page</a>

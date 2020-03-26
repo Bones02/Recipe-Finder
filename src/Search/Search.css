@@ -1,14 +1,94 @@
-.recipe_card {
-    background: grey;
+@media only screen 
+and (min-device-width: 300px)   
+and (max-device-width: 600px) { 
+    .form-search {
+        width: 75%;
+        padding:12px;
+        margin:20px auto;
+        background:#D3D3D3;
+        text-align: left;
+        border-radius: 12px;
+    }
 
+    input, select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    .recipe_card {
+        align-items: center;
+        margin: auto;
+        padding: 0px;
+    }
+    .recipe_card li {
+        width: 75%;
+        padding:12px;
+        margin:6px auto;
+        background:#D3D3D3;
+        text-align: center;
+        border: 3px black solid;
+        list-style-type: none;
+    }
+
+    .recipe_card img {
+        height: 100px;
+        width: 100px;
+    }
+
+    .title {
+        font: 16px;
+        font-weight: bold;
+    }
 }
+@media only screen 
+and (min-device-width: 601px) { 
+    .form-search {
+        width: 75%;
+        padding:12px;
+        margin:20px auto;
+        background:#D3D3D3;
+        text-align: left;
+    }
 
-.recipe_card li {
-    border: 3px black solid;
-    margin-top: 15px;
-}
+    input, select {
+        width: 100%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+    .recipe_card {
+        align-items: center;
+        margin: auto;
+        padding: 0px;
+    }
+    .recipe_card li {
+        width: 30%;
+        height: 345px;
+        padding:14px;
+        margin:12px;
+        background:#D3D3D3;
+        text-align: center;
+        border: 3px black solid;
+        list-style-type: none;
+        display: inline-block;
+        justify-content: space-between;
+    }
 
-.recipe_card img {
-    height: 100px;
-    width: 100px;
+    .recipe_card img {
+        height: 100px;
+        width: 100px;
+    }
+
+    .title {
+        font: 16px;
+        font-weight: bold;
+        height: 40px;
+    }
 }
