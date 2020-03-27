@@ -48,6 +48,7 @@ class Saved extends Component {
 
     render(){
         const { recipes=[] } = this.context
+        console.log(recipes)
         return (
             <section className='saved'>
               <h2 className="saved_recipes">Saved Recipes</h2>
@@ -57,8 +58,8 @@ class Saved extends Component {
                         <p className="title">{recipe.title}</p>
                         <p>Serves: {recipe.servings}</p>
                         <p>Ready in: {recipe.readyInMinutes} Minutes</p>
-                        <a href={`https://spoonacular.com/recipes/${recipe.image}`} target="_blank" alt="Recipe Link">Recipe Page</a>
-                        <img src={`https://spoonacular.com/recipeImages/${recipe.image}`}/>   
+                        <img src={`https://spoonacular.com/recipeImages/${recipe.image}`}/> 
+                        <br />
                         <button
                             className='Note__delete'
                             type='button'

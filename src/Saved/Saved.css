@@ -36,6 +36,10 @@ and (max-device-width: 600px) {
 }
 @media only screen 
 and (min-device-width: 601px) { 
+    .saved {
+        margin: auto;
+        justify-content: center;
+    }
     .saved_recipes {
         width: 100%;
         padding: 12px 20px;
@@ -47,14 +51,18 @@ and (min-device-width: 601px) {
         background: #D3D3D3;
     }
     .saved_recipe_card {
-        align-items: center;
+        justify-content: center;
         margin: auto;
         padding: 0px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
     }
     .saved_recipe_card li {
         width: 30%;
-        height: 300px;
-        padding:12px;
+        height: 345px;
+        padding:14px;
         margin:12px;
         background:#D3D3D3;
         text-align: center;
@@ -63,16 +71,13 @@ and (min-device-width: 601px) {
         display: inline-block;
         justify-content: space-between;
     }
-
     .saved_recipe_card img {
         height: 100px;
         width: 100px;
     }
-
     .title {
         font: 16px;
         font-weight: bold;
+        height: 40px;
     }
-    
-
 }

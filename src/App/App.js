@@ -32,14 +32,13 @@ class App extends Component {
   static contextType = RecipeContext;
 
   componentDidMount() {
-    Promise.all([
-      fetch(`${config.API_ENDPOINT}/recipe`),
-    ])
-    .then((recipesRes) => {
+   
+    fetch(`${config.API_ENDPOINT}/recipe`)
+    .then(recipesRes => {
+      console.log(recipesRes)
       if (!recipesRes.ok)
         return recipesRes.json().then(e => Promise.reject(e));
-  
-      return Promise.all(recipesRes.json());
+      return (recipesRes.json());
     })
     .then((recipes) => {
       console.log(recipes);

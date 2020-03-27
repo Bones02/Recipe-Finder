@@ -67,6 +67,10 @@ and (min-device-width: 601px) {
         align-items: center;
         margin: auto;
         padding: 0px;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
     }
     .recipe_card li {
         width: 30%;
