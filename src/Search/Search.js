@@ -62,7 +62,7 @@ class Search extends Component {
                         <input type="text" className="form-control" id="term" 
                             placeholder="coffee" name="term" 
                             onChange={e => this.updateTerm(e.target.value)}/>
-                        <button type="submit" className="button-submit"></button>
+                        <button type="submit" className="button-submit">Search!</button>
                     </form>
                 </div>
                 <ul className="recipe_card">
@@ -71,7 +71,8 @@ class Search extends Component {
                         <p className="title">{recipe.title}</p> 
                         <p>Serves: {recipe.servings}</p>
                         <p>Ready in: {recipe.readyInMinutes} Minutes</p>
-                        <img src={`https://spoonacular.com/recipeImages/${recipe.image}`}/>   
+                        <img src={`https://spoonacular.com/recipeImages/${recipe.image}`}/> 
+                        <br />  
                         <button type="button" className="button-save" 
                             onClick={e => this.context.saveRecipe(recipe)}>Save</button>  
                     </li> 

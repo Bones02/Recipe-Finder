@@ -33,20 +33,21 @@ class App extends Component {
 
   componentDidMount() {
     Promise.all([
-        fetch(`${config.API_ENDPOINT}/recipe`),
+      fetch(`${config.API_ENDPOINT}/recipe`),
     ])
-        .then(([recipesRes]) => {
-            if (!recipesRes.ok)
-                return recipesRes.json().then(e => Promise.reject(e));
-
-            return Promise.all([recipesRes.json()]);
-        })
-        .then(([recipes]) => {
-            this.setState({recipes});
-        })
-        .catch(error => {
-            console.error({error});
-        });
+    .then((recipesRes) => {
+      if (!recipesRes.ok)
+        return recipesRes.json().then(e => Promise.reject(e));
+  
+      return Promise.all(recipesRes.json());
+    })
+    .then((recipes) => {
+      console.log(recipes);
+      this.setState({recipes});
+    })
+    .catch(error => {
+      console.error({error});
+    });
   }
 
   handleDeleteRecipe = recipeId => {
@@ -56,13 +57,6 @@ class App extends Component {
   };
 
   saveRecipe = recipe => {
-    this.handleRecipe(recipe)
-    console.log("recipe saved")
-    console.log(recipe)
-  }
-
-  handleRecipe(recipe){
-    //const {savedRecipes} = savedRecipes
     console.log(recipe)
      
     let options = {
@@ -76,9 +70,14 @@ class App extends Component {
         headers: { 'Content-Type': 'application/json'}
     }
     fetch(`${config.API_ENDPOINT}/recipe`, options) 
-    .then(res => console.log(res))
+    .then(res => {
+      console.log(res)
+      this.setState({recipes: [...this.state.recipes, res]});
+    })
+
     .then(() => {
         console.log(this.props) 
+        alert("Saved!");
         //this.props.history.push(`/Saved`)
     })
   }
