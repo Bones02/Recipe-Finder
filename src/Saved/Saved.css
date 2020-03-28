@@ -33,6 +33,9 @@ and (max-device-width: 600px) {
         font: 16px;
         font-weight: bold;
     }
+    .recipe_delete {
+        margin-top: 20px;
+    }
 }
 @media only screen 
 and (min-device-width: 601px) { 
@@ -61,7 +64,7 @@ and (min-device-width: 601px) {
     }
     .saved_recipe_card li {
         width: 30%;
-        height: 345px;
+        height: 400px;
         padding:14px;
         margin:12px;
         background:#D3D3D3;
@@ -79,5 +82,8 @@ and (min-device-width: 601px) {
         font: 16px;
         font-weight: bold;
         height: 40px;
+    }
+    .recipe_delete {
+        margin-top: 20px;
     }
 }

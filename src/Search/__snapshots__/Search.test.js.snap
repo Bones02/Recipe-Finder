@@ -1,0 +1,37 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Search component renders a .search by default 1`] = `
+<div>
+  <div
+    className="search_page"
+  >
+    <form
+      className="form-search"
+      onSubmit={[Function]}
+    >
+      <label
+        htmlFor="search"
+      >
+        Search:
+      </label>
+      <input
+        className="form-control"
+        id="term"
+        name="term"
+        onChange={[Function]}
+        placeholder="coffee"
+        type="text"
+      />
+      <button
+        className="button-submit"
+        type="submit"
+      >
+        Search!
+      </button>
+    </form>
+  </div>
+  <ul
+    className="recipe_card"
+  />
+</div>
+`;

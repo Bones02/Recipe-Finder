@@ -2,7 +2,9 @@ Name of App: Recipe Finder App
 
 Live Link: https://recipe-finder-sigma.now.sh 
 
-Documentation of API: https://github.com/Bones02/recipe-finder-server
+Documentation of API: 
+    Repository: https://github.com/Bones02/recipe-finder-server
+    Endpoint: /recipe
 
 Screenshots:
 ![alt tag](public/home.png "Home Page")

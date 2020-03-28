@@ -1,0 +1,21 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Contact component renders a .contact by default 1`] = `
+<div
+  className="contact"
+>
+  <h2>
+    HAVE QUESTIONS?
+  </h2>
+  <p>
+    The easiest thing to do is view the curriculum at
+    <a
+      href="thinkfl.com"
+      target="_blank"
+    >
+       Thinkful
+    </a>
+    .
+  </p>
+</div>
+`;

@@ -1,11 +1,11 @@
 import React from 'react'
 import { shallow } from 'enzyme'
 import toJson from 'enzyme-to-json'
-import App from './App'
+import Saved from './Saved'
 
-describe(`App component`, () => {
-  it('renders a .app by default', () => {
-    const wrapper = shallow(<App />)
+describe(`Saved component`, () => {
+  it('renders a .saved by default', () => {
+    const wrapper = shallow(<Saved />)
     expect(toJson(wrapper)).toMatchSnapshot()
   })
 })

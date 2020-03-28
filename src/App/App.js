@@ -69,15 +69,13 @@ class App extends Component {
         headers: { 'Content-Type': 'application/json'}
     }
     fetch(`${config.API_ENDPOINT}/recipe`, options) 
-    .then(res => {
-      console.log(res)
-      this.setState({recipes: [...this.state.recipes, res]});
-    })
+    .then(res => res.json())
 
-    .then(() => {
-        console.log(this.props) 
+    .then(data => {
+        console.log(data)
+        //console.log(res.json())
+        this.setState({recipes: [...this.state.recipes, data]});
         alert("Saved!");
-        //this.props.history.push(`/Saved`)
     })
   }
 

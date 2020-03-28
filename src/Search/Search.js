@@ -73,7 +73,7 @@ class Search extends Component {
                         <p>Ready in: {recipe.readyInMinutes} Minutes</p>
                         <img src={`https://spoonacular.com/recipeImages/${recipe.image}`}/> 
                         <br />  
-                        <button type="button" className="button-save" 
+                        <button type="button" className="button_save" 
                             onClick={e => this.context.saveRecipe(recipe)}>Save</button>  
                     </li> 
                     ))}

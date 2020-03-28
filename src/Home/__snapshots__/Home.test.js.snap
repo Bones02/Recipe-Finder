@@ -1,0 +1,42 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Home component renders a .home by default 1`] = `
+<div
+  className="home"
+>
+  <h1>
+    Welcome to the Recipe Finder App
+  </h1>
+  <p>
+    Recipe Finder helps you search for recipes by ingredient and save your favorites for later! You can access all your favorite recipes by heading over to the My Recipes page.
+  </p>
+  <h2>
+    <Link
+      replace={false}
+      to="/Search"
+    >
+      Try it out for yourself!
+    </Link>
+     
+    <FontAwesomeIcon
+      border={false}
+      className=""
+      fixedWidth={false}
+      flip={null}
+      icon="coffee"
+      inverse={false}
+      listItem={false}
+      mask={null}
+      pull={null}
+      pulse={false}
+      rotation={null}
+      size={null}
+      spin={false}
+      swapOpacity={false}
+      symbol={false}
+      title=""
+      transform={null}
+    />
+  </h2>
+</div>
+`;

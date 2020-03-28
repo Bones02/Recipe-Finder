@@ -61,7 +61,7 @@ class Saved extends Component {
                         <img src={`https://spoonacular.com/recipeImages/${recipe.image}`}/> 
                         <br />
                         <button
-                            className='Note__delete'
+                            className='recipe_delete'
                             type='button'
                             onClick={() => this.handleClickDelete(recipe)}
                         >

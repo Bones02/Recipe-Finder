@@ -1,0 +1,95 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`App component renders a .app by default 1`] = `
+<ContextProvider
+  value={
+    Object {
+      "deleteRecipe": [Function],
+      "recipes": Array [],
+      "saveRecipe": [Function],
+      "savedRecipes": undefined,
+    }
+  }
+>
+  <div>
+    <h1>
+      Recipe Finder
+    </h1>
+    <ul
+      className="header"
+    >
+      <li>
+        <NavLink
+          activeClassName="active"
+          aria-current="page"
+          exact={true}
+          to="/"
+        >
+          Home
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          activeClassName="active"
+          aria-current="page"
+          to="/Search"
+        >
+          Search for Recipes
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          activeClassName="active"
+          aria-current="page"
+          to="/Saved"
+        >
+          Saved Recipes
+        </NavLink>
+      </li>
+      <li>
+        <NavLink
+          activeClassName="active"
+          aria-current="page"
+          to="/contact"
+        >
+          Contact
+        </NavLink>
+      </li>
+    </ul>
+    <div
+      className="content"
+    >
+      <Route
+        component={[Function]}
+        exact={true}
+        path="/"
+      />
+      <Route
+        component={[Function]}
+        path="/Search"
+      />
+      <Route
+        component={[Function]}
+        path="/Saved"
+      />
+      <Route
+        component={[Function]}
+        path="/Contact"
+      />
+      <div
+        className="footer"
+      >
+        <p>
+          Created by Alyssa Bonesteel
+        </p>
+        <p>
+          Copyright © 2020
+        </p>
+        <p>
+          All Rights Reserved!
+        </p>
+      </div>
+    </div>
+  </div>
+</ContextProvider>
+`;
