@@ -96,7 +96,7 @@ and (min-device-width: 601px) {
     .title {
         font: 16px;
         font-weight: bold;
-        height: 60px;
+        height: 80px;
     }
     .button_save {
         margin-top: 20px;

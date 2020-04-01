@@ -6,9 +6,8 @@ class Contact extends Component {
     return (
       <div className="contact">
         <h2>HAVE QUESTIONS?</h2>
-        <p>The easiest thing to do is view the curriculum at 
-            <a target="_blank" href="thinkfl.com"> Thinkful</a>.
-        </p>
+        <p>Email me at anbonesteel@gmail.com</p> 
+        <a target="_blank" href="https://www.linkedin.com/in/alyssabonesteel/">Connect with me on LinkedIn</a>
       </div>
     );
   }

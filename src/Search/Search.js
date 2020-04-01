@@ -20,7 +20,7 @@ class Search extends Component {
 
     static contextType = RecipeContext;
 
-    //This is the API call based on user input term.
+    //API call based on user input term.
     updateTerm(term) {
         this.setState({term: term})
     }
@@ -66,15 +66,16 @@ class Search extends Component {
                     </form>
                 </div>
                 <ul className="recipe_card">
-                    {recipes.map(recipe => (
+                    {recipes.map(
+                      recipe => (
                     <li key={recipe.identification}>
                         <p className="title">{recipe.title}</p> 
                         <p>Serves: {recipe.servings}</p>
                         <p>Ready in: {recipe.readyInMinutes} Minutes</p>
-                        <img src={`https://spoonacular.com/recipeImages/${recipe.image}`}/> 
+                        <img src={`https://spoonacular.com/recipeImages/${recipe.image}`} alt="recipe"/> 
                         <br />  
                         <button type="button" className="button_save" 
-                            onClick={e => this.context.saveRecipe(recipe)}>Save</button>  
+                            onClick={e => this.context.saveRecipe(recipe)}>Save</button> 
                     </li> 
                     ))}
                 </ul>

@@ -14,9 +14,8 @@ import Search from '../Search/Search'
 import Contact from '../Contact/Contact'
 import 'typeface-roboto'
 import './App.css'
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import RecipeContext from '../RecipeContext'
-import PropTypes from 'prop-types';
+import swal from 'sweetalert';
 
 library.add(faPlus, faChevronLeft, faTrashAlt, faCheckDouble, faCoffee, faRunning)
 
@@ -56,8 +55,6 @@ class App extends Component {
   };
 
   saveRecipe = recipe => {
-    console.log(recipe)
-     
     let options = {
         method: 'POST', 
         body: JSON.stringify({
@@ -72,10 +69,12 @@ class App extends Component {
     .then(res => res.json())
 
     .then(data => {
-        console.log(data)
-        //console.log(res.json())
-        this.setState({recipes: [...this.state.recipes, data]});
-        alert("Saved!");
+      this.setState({recipes: [...this.state.recipes, data]});
+      swal({
+        title: "Saved!",
+        text: "Go to the Saved Recipes page to see your recipes",
+        icon: "success",
+      });
     })
   }
 
@@ -84,7 +83,6 @@ class App extends Component {
         recipes: this.state.recipes,
         savedRecipes: this.savedRecipes,
         saveRecipe: this.saveRecipe,
-        recipes: this.state.recipes,
         deleteRecipe: this.handleDeleteRecipe,
       }
 

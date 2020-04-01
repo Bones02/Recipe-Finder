@@ -84,6 +84,6 @@ and (min-device-width: 650px) {
     margin-bottom: 10px;
   }
   .active {
-    background-color: #808488;
+    background-color: rgb(58, 55, 55);
   }
 }

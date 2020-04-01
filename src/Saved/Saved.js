@@ -3,7 +3,7 @@ import RecipeContext from '../RecipeContext';
 import config from '../config';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import {
-  faPlus, faChevronLeft, faTrashAlt, faCheckDouble, faCoffee, faRunning
+  faChevronLeft, faTrashAlt, faCoffee,
 } from '@fortawesome/free-solid-svg-icons'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import './Saved.css'
@@ -58,7 +58,7 @@ class Saved extends Component {
                         <p className="title">{recipe.title}</p>
                         <p>Serves: {recipe.servings}</p>
                         <p>Ready in: {recipe.readyInMinutes} Minutes</p>
-                        <img src={`https://spoonacular.com/recipeImages/${recipe.image}`}/> 
+                        <img src={`https://spoonacular.com/recipeImages/${recipe.image}`} alt="recipe"/> 
                         <br />
                         <button
                             className='recipe_delete'

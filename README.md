@@ -4,10 +4,12 @@ Live Link: https://recipe-finder-sigma.now.sh
 
 Documentation of API: 
     Repository: https://github.com/Bones02/recipe-finder-server
-    Endpoint: /recipe
+    Summary: Database stores users saved recipes. Routes available for GET, POST, PATCH, and DELETE. No authenitcation required.
+    Endpoint: GET /recipe Action: Get all recipes
+    Endoint: GET /recipeId Action: provides get recipe by Id
 
 Screenshots:
-![alt tag](public/home.png "Home Page")
+![alt tag](public/Home.png "Home Page")
 ![alt tag](public/SearchRecipes.png "Search Page")
 ![alt tag](public/Saved.png "Saved Page")
 ![alt tag](public/Contact.png "Contact")
