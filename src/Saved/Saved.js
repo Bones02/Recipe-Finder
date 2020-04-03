@@ -16,7 +16,6 @@ class Saved extends Component {
     static contextType = RecipeContext;
 
     handleDeleteRecipe = recipeId => {
-        console.log(recipeId)
         this.setState({
             recipes: this.state.recipes.filter(recipe => recipe.id !== recipeId)
         });
@@ -24,9 +23,6 @@ class Saved extends Component {
 
     handleClickDelete = recipe => {
         const recipeId = recipe.id
-          console.log(this.props)
-          console.log(recipe)
-          console.log(recipeId)
         
         fetch(`${config.API_ENDPOINT}/recipe/${recipeId}`, {
           method: 'DELETE',
@@ -48,7 +44,6 @@ class Saved extends Component {
 
     render(){
         const { recipes=[] } = this.context
-        console.log(recipes)
         return (
             <section className='saved'>
               <h2 className="saved_recipes">Saved Recipes</h2>

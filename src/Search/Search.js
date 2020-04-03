@@ -29,8 +29,6 @@ class Search extends Component {
         e.preventDefault();
         e.target.reset();
         const {term} = this.state
-        console.log(`term is ${term}`)
-        console.log(`api key is ${config.API_KEY}`)
 
       fetch(`https://api.spoonacular.com/recipes/search?apiKey=${config.API_KEY}&query=${term}`)
         .then(res => res.json())

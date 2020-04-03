@@ -34,13 +34,11 @@ class App extends Component {
    
     fetch(`${config.API_ENDPOINT}/recipe`)
     .then(recipesRes => {
-      console.log(recipesRes)
       if (!recipesRes.ok)
         return recipesRes.json().then(e => Promise.reject(e));
       return (recipesRes.json());
     })
     .then((recipes) => {
-      console.log(recipes);
       this.setState({recipes});
     })
     .catch(error => {

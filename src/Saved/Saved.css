@@ -28,6 +28,7 @@ and (max-device-width: 600px) {
     .saved_recipe_card img {
         height: 100px;
         width: 100px;
+        object-fit: cover;
     }
     .title {
         font: 16px;
@@ -77,6 +78,7 @@ and (min-device-width: 601px) {
     .saved_recipe_card img {
         height: 100px;
         width: 100px;
+        object-fit: cover;
     }
     .title {
         font: 16px;

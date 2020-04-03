@@ -37,6 +37,7 @@ and (max-device-width: 600px) {
     .recipe_card img {
         height: 100px;
         width: 100px;
+        object-fit: cover;
     }
 
     .title {
@@ -91,6 +92,7 @@ and (min-device-width: 601px) {
     .recipe_card img {
         height: 100px;
         width: 100px;
+        object-fit: cover;
     }
 
     .title {
